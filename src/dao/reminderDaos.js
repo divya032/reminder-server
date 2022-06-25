@@ -7,7 +7,6 @@ exports.createReminder = async (reminderDetail) => {
 };
 
 exports.fetchRemindersByUserId = async ({ searchFilter }) => {
-  console.log(searchFilter);
   return execAsync(Reminder.find(searchFilter));
 };
 

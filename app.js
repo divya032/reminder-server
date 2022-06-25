@@ -34,10 +34,6 @@ app.use(function (req, res, next) {
   res.status(404).send("Url Not Found");
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Started app at port: ${process.env.PORT}`);
-});
-
 // error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
