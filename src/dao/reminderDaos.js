@@ -1,4 +1,4 @@
-const Reminder = require("../models/Reminder.model");
+const Reminder = require("../models/reminder.model");
 const { execAsync } = require("../utils/helper");
 
 exports.createReminder = async (reminderDetail) => {
