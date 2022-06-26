@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const schema = mongoose.Schema({
   title: String,
   message: String,
-  sendTime: Date,
+  reminderTime: Date,
   userId: String,
   createdOn: Date,
   modifiedOn: Date,

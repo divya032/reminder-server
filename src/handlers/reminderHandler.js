@@ -8,23 +8,25 @@ const error = require("../errors/codes");
 
 exports.postReminder = async (req, res) => {
   try {
-    const { sendTime, title, message } = req.body;
+    const { reminderTime, title, message } = req.body;
     const { userId } = req.params;
 
-    if (!title || !message || !sendTime) {
+    if (!title || !message || !reminderTime) {
+      console.log(req.body);
       return res.status(400).send(error.InvalidRequestBody);
     }
 
-    const sentDateTime = new Date(sendTime);
+    const sentDateTime = new Date(reminderTime);
 
     if (sentDateTime < new Date()) {
-      return res.status(400).send(error.InvalidsendTime);
+      console.log(req.body);
+      return res.status(400).send(error.InvalidReminderTime);
     }
 
     const { data, err: err1 } = await createReminder({
       title,
       message,
-      sendTime: sentDateTime,
+      reminderTime: sentDateTime,
       userId,
       status: "CREATED",
       createdOn: new Date(),
@@ -70,18 +72,18 @@ exports.getReminders = async (req, res) => {
 
 exports.patchReminder = async (req, res) => {
   try {
-    const { sendTime } = req.body;
+    const { reminderTime } = req.body;
     const { reminderId } = req.params;
 
     let newData = {};
 
-    if (sendTime) {
-      const sentDateTime = new Date(sendTime);
+    if (reminderTime) {
+      const sentDateTime = new Date(reminderTime);
 
       if (sentDateTime < new Date()) {
-        return res.status(400).send(error.InvalidsendTime);
+        return res.status(400).send(error.InvalidReminderTime);
       }
-      newData.sendTime = sentDateTime;
+      newData.reminderTime = sentDateTime;
     }
 
     newData = { ...newData, ...req.body, modifiedOn: new Date() };

@@ -16,6 +16,7 @@ exports.postUser = async (req, res) => {
       emailId,
       phoneNumber,
       password: hash,
+      createdOn: new Date(),
     };
 
     const { data, err } = await postUser(userDetail);

@@ -11,7 +11,7 @@ module.exports = {
     code: "Invalid Request Data",
     message: "Missing required fields",
   },
-  InvalidSenDTime: {
+  InvalidReminderTime: {
     code: "Invalid Request Data",
     message: "SendTime should be greater than current Date-time",
   },
